@@ -15,12 +15,30 @@
 			<div class="cat-count"></div>
 			<img class="cat-img" src="" alt="cat">
 		</div>
+		<div class="admin">
+			<button id = "adminBtn" type="button">Admin</button>
+			<div class="admin-content">
+				<label for="admin-name">Name</label>
+				<input type="text" id= "admin-name" name="admin-name" value="">
+				<br>
+				<label for="admin-url">ImgURL</label>
+				<input type="text" id= "admin-url" name="admin-url" value="">
+				<br>
+				<label for="admin-count">#Clicks</label>
+				<input type="text" id="admin-count" name="admin-count" value="">
+				<br>
+				<button type="button" id="admin-cancel">Cancel</button>
+				<button type="button" id="admin-save">Save</button>
+			</div>
+        </div>
+		
 	</main>
 	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="js/cat.js"></script>
 	<script type="text/javascript" src="js/model.js"></script>
 	<script type="text/javascript" src="js/view/catList.js"></script>
 	<script type="text/javascript" src="js/view/catDetail.js"></script>
+	<script type="text/javascript" src="js/view/admin.js"></script>
 	<script type="text/javascript" src="js/octopus.js"></script>
 </body>
 

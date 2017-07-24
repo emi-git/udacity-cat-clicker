@@ -19,7 +19,7 @@ var CatListView = {
         var cats = octopus.getCats();
         var catsList = [];
         // empty the cat list
-        this.catListElem.innerHTML = '';
+        this.catListElem.empty();
 
         cats.forEach(function (currentValue, index, array) {
             catsList.push(

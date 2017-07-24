@@ -10,6 +10,7 @@ var CatDetailView = {
         //add event listener
         this.catElem.on("click", ".cat-img", function (e) {
             octopus.incrementCounter();
+            AdminView.render();
         })
 
         this.renderAll();
