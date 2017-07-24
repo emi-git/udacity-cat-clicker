@@ -1,27 +1,35 @@
 var CatDetailView = {
-    addCatToDoc: function(cat) {
-        $("main").append(
-            $(document.createElement("div"))
-            .css({
-                width: "50%",
-                display: "inline-block"
-            })
-            .addClass("catClicker")
-            .append(
-                $(document.createElement("p")).text(cat.name).addClass("cat-name"),
-                $(document.createElement("p")).text(cat.clickcount).addClass("cat-count"),
-                $(document.createElement("img"))
-                .attr({
-                    src: cat.src,
-                    alt: "cat"
-                }).addClass("cat-pic")
-                .data({
-                    id: cat.name
-                })
-            )
-        );
+
+    //init variables, set event, call render
+    init: function () {
+        // store pointers to our DOM elements for easy access later
+        this.catElem = $('.catClicker');
+        this.catNameElem = $('.cat-name');
+        this.catImageElem = $('.cat-img');
+        this.countElem = $('.cat-count');
+        //add event listener
+        this.catElem.on("click", ".cat-img", function (e) {
+            octopus.incrementCounter();
+        })
+
+        this.renderAll();
+
     },
-    removeExistingCat : function(){
-        $(".catClicker").remove();
+    //update DOM elements
+    renderAll: function () {
+        // update the DOM elements with values from the current cat
+        var currentCat = octopus.getCurrentCat();
+        this.renderCount(currentCat.clickcount);
+        this.renderName(currentCat.name);
+        this.renderImg(currentCat.src);
+    },
+    renderCount: function (count) {
+        this.countElem.text(count);
+    },
+    renderImg: function (src) {
+        this.catImageElem.attr({ src: src });
+    },
+    renderName: function (name) {
+        this.catNameElem.text(name);
     }
 };

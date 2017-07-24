@@ -1,41 +1,37 @@
-$(document).ready(function() {
+var octopus = {
+    //init model and view
+    init: function () {
+        model.currentCat = model.cats[0];
+        CatListView.init();
+        CatDetailView.init();
+    },
 
-    $("main").on("click", ".list-cat", function(e) {
-        CatDetailView.removeExistingCat();
-        //place the new cat
-        var $catli = $(e.target);
-        var catName = $catli.data("id");
-        var i = 0;
-        var currentCat;
-        for (i = 0; i < cats.length; i++) {
-            if (cats[i].name === catName) {
-                currentCat = cats[i];
+    getCurrentCat: function () {
+        return model.currentCat;
+    },
+    setCurrentCat: function (cat) {
+        model.currentCat = cat;
+    },
+    getCats: function () {
+        return model.cats;
+    },
+    // increments the counter for the currently-selected cat
+    incrementCounter: function () {
+        var currentCat = this.getCurrentCat();
+        currentCat.incrementClickCount();
+        CatDetailView.renderCount(currentCat.getClickcount());
+    },
+    getCatbyName: function (catname) {
+        var cat;
+        var cats = model.cats;
+        for (var i = 0; i < cats.length; i++) {
+            if (cats[i].name === catname) {
+                cat = cats[i];
                 break;
             }
         }
-        CatDetailView.addCatToDoc(cats[i]);
-    });
-    $("main").on("click", ".cat-pic", function(e) {
-        var $catimg = $(e.target);
-        var catName = $catimg.data("id");
-        var i = 0;
-        var currentCat;
-        for (i = 0; i < cats.length; i++) {
-            if (cats[i].name === catName) {
-                currentCat = cats[i];
-                break;
-            }
-        }
-        currentCat.updateClickcount();
-        $catimg.siblings(".cat-count").text(currentCat.clickcount);
-    })
+        return cat;
+    }
+};
 
-    var cats = [
-        new Cat({ name: "Bujo", src: "img/624175845_8b1aab1f72_n.jpg" }),
-        new Cat({ name: "Princess", src: "img/624215185_6ee2b029b5_n.jpg" }),
-        new Cat({ name: "Black", src: "img/625049770_852d817de9_n.jpg" }),
-        new Cat({ name: "White", src: "img/625069434_db86b67df8_n.jpg" }),
-        new Cat({ name: "Momo", src: "img/625112530_b0c88f4dac_n.jpg" })
-    ]
-    CatListView.addCatListToDoc(cats);
-});
+octopus.init();

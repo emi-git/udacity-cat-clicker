@@ -1,9 +1,13 @@
-var Cat = function(settings){
+var Cat = function (settings) {
     this.name = settings.name;
     this.src = settings.src;
     this.clickcount = 0;
 }
 
-Cat.prototype.updateClickcount = function () {
-    this.clickcount ++;
+Cat.prototype.incrementClickCount = function () {
+    this.clickcount++;
+}
+
+Cat.prototype.getClickcount = function () {
+    return this.clickcount;
 }
