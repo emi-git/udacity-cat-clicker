@@ -4,6 +4,6 @@ var Cat = function(settings){
     this.clickcount = 0;
 }
 
-Cat.prototype.setClickcount = function () {
+Cat.prototype.updateClickcount = function () {
     this.clickcount ++;
 }
